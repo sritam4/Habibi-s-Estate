@@ -4,11 +4,17 @@ import DetailsCard from "../Components/DetailsCard";
 import Filter from "../Components/Filter";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import ListShimmer from "../Components/ListShimmer";
 
-const Rent = () => {
+const List = () => {
   const [propertiesList, setPropertiesList] = useState([]);
   const API_KEY = process.env.REACT_APP_Api_Key;
   const HOST = process.env.REACT_APP_HOST;
+
+  const [searchParams] = useSearchParams();
+  const locationId = searchParams.get("loc");
+  const purpose = searchParams.get("purpose");
 
   const filterObject = useSelector((store) => store.filter.filterOptions);
   const { category, price, beds, baths, sort } = filterObject;
@@ -17,13 +23,12 @@ const Rent = () => {
     method: "GET",
     url: "https://bayut.p.rapidapi.com/properties/list",
     params: {
-      locationExternalIDs: "5002,6020",
-      purpose: "for-rent",
+      locationExternalIDs: locationId,
+      purpose: purpose,
       hitsPerPage: "25",
       page: "0",
       lang: "en",
       sort: sort,
-      rentFrequency: "monthly",
       categoryExternalID: parseInt(category),
       priceMin: parseInt(price) ? parseInt(price) : 0,
       roomsMin: parseInt(beds),
@@ -48,11 +53,16 @@ const Rent = () => {
 
   useEffect(() => {
     getPropertiesList();
+
+    return () => {
+      setPropertiesList([]);
+    };
     // eslint-disable-next-line
-  }, [filterObject]);
+  }, [filterObject, locationId, purpose]);
 
   if (propertiesList?.length === 0) {
-    return null;
+    console.log(propertiesList.length);
+    return <ListShimmer />;
   }
   return (
     <div className="w-full">
@@ -64,4 +74,4 @@ const Rent = () => {
   );
 };
 
-export default Rent;
+export default List;

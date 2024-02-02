@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { PiBathtub } from "react-icons/pi";
 import { GrLocation } from "react-icons/gr";
 import { IoPricetagOutline } from "react-icons/io5";
@@ -15,7 +14,7 @@ const PropertyCard = ({
   score,
   coverPhoto,
 }) => {
-  const reversedLocation = location.reverse();
+  const reversedLocation = location.toReversed();
   const formattedCurrency = useCurrencyFormatter(price);
   return (
     <div className="w-80 h-[450px] m-2 mb-8 p-2 text-sm font-semibold relative hover:shadow-2xl flex flex-col gap-2">
@@ -24,7 +23,9 @@ const PropertyCard = ({
         src={coverPhoto?.url}
         alt="cover"
       />
-      <h2 className=" text-lg text-gray-700">{title}</h2>
+      <h2 className=" text-lg text-gray-700 max-h-20 overflow-hidden">
+        {title}
+      </h2>
       <h4 className="text-gray-600 flex gap-2">
         <IoPricetagOutline className="font-bold text-xl" />
         Price: {formattedCurrency} ADE

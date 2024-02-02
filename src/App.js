@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Buy from "./Pages/Buy";
+import List from "./Pages/List";
 import Rent from "./Pages/Rent";
 import Login from "./Pages/Login";
 import AppLayout from "./Components/AppLayout";
@@ -21,8 +21,8 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/for-buy",
-        element: <Buy />,
+        path: "/list",
+        element: <List />,
       },
       {
         path: "/for-rent",

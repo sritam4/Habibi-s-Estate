@@ -24,6 +24,7 @@ const DetailsCard = ({
 }) => {
   const formattedCurrency = UseCurrencyFormatter(price);
   const dateDifference = useDateDifference(updatedAt);
+  const formattedAddress = location?.toReversed();
 
   return (
     <div className="w-7/12 min-w-[800px] mx-16 my-5 h-72 rounded-xl overflow-hidden shadow-lg border">
@@ -44,7 +45,7 @@ const DetailsCard = ({
           <h3 className="text-lg h-16 w-full font-normal">{title}</h3>
           <h4 className="text-gray-600 flex gap-2">
             <GrLocation className="font-bold text-2xl" />
-            {`${location?.map((item) => item?.name)}`}
+            {`${formattedAddress?.map((item) => item?.name)}`}
           </h4>
 
           <div className="flex py-2 gap-3 text-gray-600 m-1">
