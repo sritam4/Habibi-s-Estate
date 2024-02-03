@@ -27,7 +27,7 @@ const DetailsCard = ({
   const formattedAddress = location?.toReversed();
 
   return (
-    <div className="w-7/12 min-w-[800px] mx-16 my-5 h-72 rounded-xl overflow-hidden shadow-lg border">
+    <div className="w-[90%] mx-auto min-w-[800px] my-5 h-72 rounded-xl overflow-hidden shadow-lg border">
       <div className="w-full h-[calc(100%-40px)] flex">
         <div className="w-[400px]">
           <img

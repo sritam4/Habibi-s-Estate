@@ -24,8 +24,8 @@ const Filter = () => {
   };
 
   return (
-    <div className="w-full h-14 shadow-lg bg-slate-100">
-      <ul className="flex lg:w-10/12 m-auto justify-around text-lg text-gray-600 select-none">
+    <div className="w-full py-2 shadow-lg bg-slate-100">
+      <ul className="flex flex-wrap lg:w-10/12 m-auto justify-around text-lg text-gray-600 select-none">
         <li className="p-2 mx-2 whitespace-nowrap">
           Category :
           <select

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-// import { data } from "../Utils/Demo";
+import { data } from "../Utils/Demo";
 import DetailsCard from "../Components/DetailsCard";
 import Filter from "../Components/Filter";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import ListShimmer from "../Components/ListShimmer";
+import AdComponent from "../Components/AdComponent";
 
 const List = () => {
   const [propertiesList, setPropertiesList] = useState([]);
@@ -42,10 +43,10 @@ const List = () => {
 
   const getPropertiesList = async () => {
     try {
-      const response = await axios.request(options);
-      setPropertiesList(response.data?.hits);
-      console.log(response.data);
-      // setPropertiesList(data?.hits);
+      // const response = await axios.request(options);
+      // setPropertiesList(response.data?.hits);
+      // console.log(response.data);
+      setPropertiesList(data?.hits);
     } catch (error) {
       console.error(error);
     }
@@ -67,9 +68,14 @@ const List = () => {
   return (
     <div className="w-full">
       <Filter />
-      {propertiesList?.map((item) => {
-        return <DetailsCard key={item?.id} {...item} />;
-      })}
+      <div className="w-full flex ">
+        <div className="xl:w-8/12 p-2">
+          {propertiesList?.map((item) => {
+            return <DetailsCard key={item?.id} {...item} />;
+          })}
+        </div>
+        <AdComponent />
+      </div>
     </div>
   );
 };

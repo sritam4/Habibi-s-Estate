@@ -1,7 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import List from "./Pages/List";
-import Rent from "./Pages/Rent";
 import Login from "./Pages/Login";
 import AppLayout from "./Components/AppLayout";
 import Home from "./Pages/Home";
@@ -23,10 +22,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/list",
         element: <List />,
-      },
-      {
-        path: "/for-rent",
-        element: <Rent />,
       },
       {
         path: "/agencies",
