@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useCurrencyFormatter from "../Hooks/useCurrencyFormatter";
 
 const PropertyCard = ({
+  externalID,
   price,
   title,
   location,
@@ -55,7 +56,7 @@ const PropertyCard = ({
         {`Location: ${reversedLocation?.map((item) => item?.name)}`}
       </h6>
       <Link
-        to={"/details"}
+        to={`/details?Property=${externalID}`}
         className="w-full border p-1 text-xl text-white bg-blue-500 absolute bottom-0 -m-2 flex items-center justify-center"
       >
         Contact

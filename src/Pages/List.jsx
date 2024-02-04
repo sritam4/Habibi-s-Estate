@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "../Utils/Demo";
+// import { data } from "../Utils/Demo";
 import DetailsCard from "../Components/DetailsCard";
 import Filter from "../Components/Filter";
 import axios from "axios";
@@ -43,10 +43,9 @@ const List = () => {
 
   const getPropertiesList = async () => {
     try {
-      // const response = await axios.request(options);
-      // setPropertiesList(response.data?.hits);
-      // console.log(response.data);
-      setPropertiesList(data?.hits);
+      const response = await axios.request(options);
+      setPropertiesList(response.data?.hits);
+      // setPropertiesList(data?.hits);
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +61,6 @@ const List = () => {
   }, [filterObject, locationId, purpose]);
 
   if (propertiesList?.length === 0) {
-    console.log(propertiesList.length);
     return <ListShimmer />;
   }
   return (

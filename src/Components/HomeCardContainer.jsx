@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropertyCard from "./PropertyCard";
-import { data } from "../Utils/Demo";
+// import { data } from "../Utils/Demo";
 import axios from "axios";
 
 const HomeCardContainer = () => {
@@ -30,10 +30,9 @@ const HomeCardContainer = () => {
 
   const getPropertiesList = async () => {
     try {
-      // const response = await axios.request(options);
-      // console.log(response.data);
-      // setPropertiesList(response.data?.hits);
-      setPropertiesList(data?.hits);
+      const response = await axios.request(options);
+      setPropertiesList(response.data?.hits);
+      // setPropertiesList(data?.hits);
     } catch (error) {
       console.error(error);
     }
