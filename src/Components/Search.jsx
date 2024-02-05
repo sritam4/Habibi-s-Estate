@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IoSearchSharp } from "react-icons/io5";
-import { DemoSearchSuggestions } from "../Utils/DemoSearchSuggestions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addSuggestions } from "../Utils/searchSlice";
@@ -39,7 +38,6 @@ const Search = ({ purpose }) => {
         dispatch(
           addSuggestions({
             [searchQuery]: response.data?.hits,
-            [searchQuery]: DemoSearchSuggestions,
           })
         );
       }

@@ -6,11 +6,13 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import ListShimmer from "../Components/ListShimmer";
 import AdComponent from "../Components/AdComponent";
+import NoResult from "../Components/NoResult";
 
 const List = () => {
   const [propertiesList, setPropertiesList] = useState([]);
   const API_KEY = process.env.REACT_APP_Api_Key;
   const HOST = process.env.REACT_APP_HOST;
+  const [isLoading, setIsLoading] = useState(false);
 
   const [searchParams] = useSearchParams();
   const locationId = searchParams.get("loc");
@@ -42,7 +44,10 @@ const List = () => {
 
   const getPropertiesList = async () => {
     try {
-      const response = await axios.request(options);
+      setIsLoading(true);
+      const response = await axios
+        .request(options)
+        .finally(() => setIsLoading(false));
       setPropertiesList(response.data?.hits);
     } catch (error) {
       console.error(error);
@@ -58,20 +63,22 @@ const List = () => {
     // eslint-disable-next-line
   }, [filterObject, locationId, purpose]);
 
-  if (propertiesList?.length === 0) {
-    return <ListShimmer />;
-  }
+  if (isLoading) return <ListShimmer />;
   return (
     <div className="w-full">
       <Filter />
-      <div className="w-full flex ">
-        <div className="xl:w-8/12 p-2">
-          {propertiesList?.map((item) => {
-            return <DetailsCard key={item?.id} {...item} />;
-          })}
+      {propertiesList?.length === 0 ? (
+        <NoResult />
+      ) : (
+        <div className="w-full flex ">
+          <div className="xl:w-8/12 p-2">
+            {propertiesList?.map((item) => {
+              return <DetailsCard key={item?.id} {...item} />;
+            })}
+          </div>
+          <AdComponent />
         </div>
-        <AdComponent />
-      </div>
+      )}
     </div>
   );
 };
