@@ -4,7 +4,6 @@ import DetailsCoverPhoto from "../Components/DetailsCoverPhoto";
 import DetailsInfo from "../Components/DetailsInfo";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-// import { detailsData } from "../Utils/DemoDetailsData";
 import DetailsShimmer from "../Components/DetailsShimmer";
 
 const Details = () => {
@@ -28,8 +27,6 @@ const Details = () => {
     try {
       const response = await axios.request(options);
       setPropertyDetails(response.data);
-      // setPropertyDetails(detailsData);
-      // console.log(propertyDetails);
     } catch (error) {
       console.error(error);
     }
@@ -38,6 +35,7 @@ const Details = () => {
   useEffect(() => {
     getPropertyDetails();
     window.scrollTo(0, 0);
+    // eslint-disable-next-line
   }, [externalId]);
 
   if (propertyDetails.length === 0) return <DetailsShimmer />;

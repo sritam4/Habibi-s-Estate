@@ -10,19 +10,19 @@ const Header = () => {
         <Link to={"/"}>Habibi's Estate</Link>
       </div>
       <ul className="flex gap-6 md:gap-12 w-full md:w-2/3 lg:w-1/2  items-center justify-center text-gray-800">
-        <li>
+        <li className="hover:underline">
           <Link to={"/list?" + "purpose=for-rent" + "&loc=" + locId}>Rent</Link>
         </li>
-        <li>
+        <li className="hover:underline">
           <Link to={"/list?" + "purpose=for-sale" + "&loc=" + locId}>Buy</Link>
         </li>
-        <li>
+        <li className="hover:underline">
           <Link to="/agencies">Agencies</Link>
         </li>
-        <li>
+        <li className="hover:underline">
           <Link to="/about">about</Link>
         </li>
-        <li>
+        <li className="hover:underline">
           <Link to="/login">Login</Link>
         </li>
       </ul>

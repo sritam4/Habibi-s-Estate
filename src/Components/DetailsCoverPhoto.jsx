@@ -1,7 +1,6 @@
 import React from "react";
 
 const DetailsCoverPhoto = ({ photos }) => {
-  console.log(photos);
   if (!photos) return null;
   return (
     <div className="grid w-full md:w-9/12 lg:h-[500px] h-[400px] mx-auto grid-cols-3 gap-1 mb-5">

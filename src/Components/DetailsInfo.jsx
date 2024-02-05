@@ -71,7 +71,7 @@ const DetailsInfo = ({ details }) => {
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-10">
           {`Updated:`}
-          <span>{Date(formattedDate)}</span>
+          <span>{formattedDate}</span>
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-5">
           {`Reference Number:`}

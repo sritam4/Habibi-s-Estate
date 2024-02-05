@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { data } from "../Utils/Demo";
 import DetailsCard from "../Components/DetailsCard";
 import Filter from "../Components/Filter";
 import axios from "axios";
@@ -45,7 +44,6 @@ const List = () => {
     try {
       const response = await axios.request(options);
       setPropertiesList(response.data?.hits);
-      // setPropertiesList(data?.hits);
     } catch (error) {
       console.error(error);
     }

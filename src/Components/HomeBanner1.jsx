@@ -2,7 +2,7 @@ import SearchBox from "./SearchBox";
 
 const HomeBanner1 = () => {
   return (
-    <div className="h-[550px] w-full border my-4 relative overflow-hidden">
+    <div className="h-[550px] w-full border my-4 relative">
       <img
         className="w-full h-full"
         src="https://hooquest.com/wp-content/uploads/2021/11/facebook-cover-2.jpg"
