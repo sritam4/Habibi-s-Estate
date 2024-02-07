@@ -3,6 +3,7 @@ import { PiBathtub } from "react-icons/pi";
 import useCurrencyFormatter from "../Hooks/useCurrencyFormatter";
 import { Markup } from "interweave";
 import useDateDifference from "../Hooks/useDateDifference";
+import Contact from "./Contact";
 
 const DetailsInfo = ({ details }) => {
   const {
@@ -20,14 +21,14 @@ const DetailsInfo = ({ details }) => {
     referenceNumber,
     rentFrequency,
     product,
+    agency,
+    phoneNumber,
   } = details;
   const reversedLocation = location.toReversed();
   const formattedCurrency = useCurrencyFormatter(price);
   const formattedDate = useDateDifference(updatedAt);
   const formattedDesc = description?.replace(/\n/g, "<br>");
   const [showMore, setShowMore] = useState(false);
-
-  // console.log(updatedAt);
 
   return (
     <div className="xl:w-7/12 w-10/12 p-2">
@@ -52,16 +53,16 @@ const DetailsInfo = ({ details }) => {
         />
         {`Living Space: ${area?.toFixed(2)} sq.m. `}
       </div>
-
+      <Contact agency={agency} contacts={phoneNumber} />
       <h4 className="text-2xl font-semibold mb-1">Property Information</h4>
-      <div className="w-full flex flex-wrap gap-2 mb-5">
+      <div className="w-full flex flex-wrap gap-2 mb-5 rounded-lg bg-slate-50 p-2">
         <p className="md:w-[calc(50%-15px)] w-full py-2  flex gap-10">
           {`Purpose:`}
-          <span>{`${purpose}`}</span>
+          <span className="text-lg font-semibold text-gray-700">{`${purpose}`}</span>
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-10">
           {`Property Types:`}
-          <span>
+          <span className="text-lg font-semibold text-gray-700">
             {category
               .map((item) => {
                 return item?.name;
@@ -71,15 +72,19 @@ const DetailsInfo = ({ details }) => {
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-10">
           {`Updated:`}
-          <span>{formattedDate}</span>
+          <span className="text-lg font-semibold text-gray-700">
+            {formattedDate}
+          </span>
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-5">
           {`Reference Number:`}
-          <span>{referenceNumber}</span>
+          <span className="text-lg font-semibold text-gray-700">
+            {referenceNumber}
+          </span>
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-10">
           {`Address:`}
-          <span>
+          <span className="text-lg font-semibold text-gray-700">
             {reversedLocation
               ?.map((item) => {
                 return item.name;
@@ -89,13 +94,13 @@ const DetailsInfo = ({ details }) => {
         </p>
         <p className="md:w-[calc(50%-15px)]  w-full py-2 flex gap-10">
           {`Product Type:`}
-          <span>{product}</span>
+          <span className="text-lg font-semibold text-gray-700">{product}</span>
         </p>
       </div>
 
       <h4 className="text-2xl font-semibold my-2">Aminities</h4>
 
-      <div className="w-full flex flex-col mb-5">
+      <div className="w-full flex flex-col mb-5 bg-slate-50 rounded-lg p-2">
         {amenities?.map((item, index) => {
           return (
             <div key={index} className="text-lg text-gray-800 ">
@@ -114,7 +119,7 @@ const DetailsInfo = ({ details }) => {
         })}
       </div>
 
-      <h4 className="text-2xl font-semibold my2">Description</h4>
+      <h4 className="text-2xl font-semibold my-2">Description</h4>
       <div
         className={`text-sm text-gray-600 mb-5 overflow-hidden relative ${
           !showMore && "max-h-72"

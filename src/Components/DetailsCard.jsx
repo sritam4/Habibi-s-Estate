@@ -42,7 +42,7 @@ const DetailsCard = ({
           <div className="p-4 text-base w-[calc(100%-400px)]  font-medium">
             <h2 className="text-gray-600">{category[0].name}</h2>
             <h4 className="text-2xl my-2">
-              {formattedCurrency}
+              {formattedCurrency + " AED"}
               {rentFrequency ? " / " + rentFrequency?.slice(0, -2) : " "}
             </h4>
             <h3 className="text-lg h-16 w-full font-normal">{title}</h3>

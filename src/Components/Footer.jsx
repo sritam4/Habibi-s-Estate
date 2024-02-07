@@ -30,15 +30,14 @@ const Footer = () => {
         </div>
         <div className="w-1/2 flex flex-col items-center">
           <h4 className="text-lg font-bold mb-4">Contact Information</h4>
-          <p>123 gali, a-4 Street, Dubai, UAE</p>
+          <p>12-3, a-4 Street, Dubai, UAE</p>
           <p>Email: bsritam227@gmail.com</p>
           <p>Phone: +91 82809 38136</p>
         </div>
       </div>
       <div className="text-center mt-8">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Habibi's Estate. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} Marina Estate. All rights reserved.
         </p>
       </div>
     </footer>

@@ -19,11 +19,13 @@ const PropertyCard = ({
   const formattedCurrency = useCurrencyFormatter(price);
   return (
     <div className="w-80 h-[450px] m-2 mb-8 p-2 text-sm font-semibold relative hover:shadow-2xl flex flex-col gap-2">
-      <img
-        className="h-48 w-full mb-1 -m-2 rounded-lg"
-        src={coverPhoto?.url}
-        alt="cover"
-      />
+      <Link to={`/details?Property=${externalID}`}>
+        <img
+          className="h-48 w-full mb-1 -m-2 rounded-lg"
+          src={coverPhoto?.url}
+          alt="cover"
+        />
+      </Link>
       <h2 className=" text-lg text-gray-700 max-h-20 overflow-hidden">
         {title}
       </h2>

@@ -29,20 +29,20 @@ const HomeExploreCards = () => {
   ];
 
   const Card = ({ imgUrl, buttonText, purpose }) => (
-    <div className="w-1/3 relative ">
+    <Link
+      className="w-1/3 relative "
+      to={"/list?" + "purpose=" + purpose + "&loc=" + locIds}
+    >
       <img
         className="h-full w-full rounded-2xl"
         src={imgUrl}
         alt="card cover"
       />
-      <Link
-        to={"/list?" + "purpose=" + purpose + "&loc=" + locIds}
-        className="absolute bottom-2 bg-[rgb(0,0,0,0.7)] text-white px-4 h-7 flex gap-2 items-center border hover:bg-black"
-      >
+      <button className="absolute bottom-2 bg-[rgb(0,0,0,0.7)] text-white px-4 h-7 flex gap-2 items-center border hover:bg-black">
         {buttonText}
         <FaArrowRightLong />
-      </Link>
-    </div>
+      </button>
+    </Link>
   );
 
   return (
